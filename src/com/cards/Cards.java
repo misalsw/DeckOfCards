@@ -1,10 +1,19 @@
 package com.cards;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cards {
-    
+
+    public static final Scanner scanner = new Scanner(System.in);
     public ArrayList<String> cardsDeck = new ArrayList<>();
+
+    public static void main(String[] args) {
+
+        Cards cards = new Cards();
+        cards.deckOfCards();
+        cards.noOfPlayers();
+    }
 
     public void deckOfCards() {
         String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
@@ -29,12 +38,15 @@ public class Cards {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-
-        Cards cards = new Cards();
-        cards.deckOfCards();
-
-
+    public void noOfPlayers() {
+        System.out.println("Enter number of players");
+        int player = scanner.nextInt();
+        if (player >= 2 && player <= 4) {
+            sequenceOfPlay(player);
+        } else {
+            System.out.println("Please Enter no of players in range 2 to 4");
+        }
+        scanner.close();
     }
 }
 
