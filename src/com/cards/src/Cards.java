@@ -13,6 +13,41 @@ public class Cards {
         cards.noOfPlayers();
     }
 
+    private static void toDisplay(ArrayList<String> cardsDeck) {
+        System.out.println("\nCards in Deck: ");
+        for (String element : cardsDeck) {
+            System.out.println(element);
+        }
+        System.out.println();
+    }
+
+    public static ArrayList<String> toshuffle(ArrayList<String> cardsDeck, int player) {
+        System.out.println("Shuffling the cards before Distribution");
+        ArrayList<String> temp = new ArrayList<String>();
+        while (!cardsDeck.isEmpty()) {
+            int loc = (int) (Math.random() * cardsDeck.size());
+            temp.add(cardsDeck.get(loc));
+            cardsDeck.remove(loc);
+        }
+        cardsDeck = temp;
+        toDisplay(cardsDeck);
+        cardDistribution(cardsDeck, player);
+        return cardsDeck;
+
+    }
+
+    private static void cardDistribution(ArrayList<String> cardsDeck, int player) {
+
+        for (int i = 0; i < player; i++) {
+            System.out.println("\nPlayer " + (i + 1) + " got cards:\n");
+
+            for (int j = 0; j < 9; j++) {
+                System.out.println("\t" + cardsDeck.get(i + j * player));
+            }
+        }
+        System.out.println();
+    }
+
     public void deckOfCards() {
         String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
@@ -24,14 +59,6 @@ public class Cards {
             }
         }
         toDisplay(cardsDeck);
-    }
-
-    private void toDisplay(ArrayList<String> cardsDeck) {
-        System.out.println("\nCards in Deck: ");
-        for (String element : cardsDeck) {
-            System.out.println(element);
-        }
-        System.out.println();
     }
 
     public void noOfPlayers() {
@@ -51,15 +78,5 @@ public class Cards {
         toshuffle(cardsDeck, player);
     }
 
-    public static ArrayList<String> toshuffle(ArrayList<String> cardsDeck, int player) {
-        System.out.println("Shuffling the cards before Distribution");
-        ArrayList<String> temp = new ArrayList<String>();
-        while (!cardsDeck.isEmpty()) {
-            int loc = (int) (Math.random() * cardsDeck.size());
-            temp.add(cardsDeck.get(loc));
-            cardsDeck.remove(loc);
-        }
-        return temp;
-    }
 }
 
