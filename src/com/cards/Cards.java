@@ -3,8 +3,7 @@ package com.cards;
 import java.util.ArrayList;
 
 public class Cards {
-
-    public static final Scanner scanner = new Scanner(System.in);
+    
     public ArrayList<String> cardsDeck = new ArrayList<>();
 
     public void deckOfCards() {
