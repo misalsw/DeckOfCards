@@ -13,6 +13,14 @@ public class Cards {
         cards.noOfPlayers();
     }
 
+    private static void toDisplay(ArrayList<String> cardsDeck) {
+        System.out.println("\nCards in Deck: ");
+        for (String element : cardsDeck) {
+            System.out.println(element);
+        }
+        System.out.println();
+    }
+
     public static ArrayList<String> toshuffle(ArrayList<String> cardsDeck, int player) {
         System.out.println("Shuffling the cards before Distribution");
         ArrayList<String> temp = new ArrayList<String>();
@@ -21,7 +29,23 @@ public class Cards {
             temp.add(cardsDeck.get(loc));
             cardsDeck.remove(loc);
         }
-        return temp;
+        cardsDeck = temp;
+        toDisplay(cardsDeck);
+        cardDistribution(cardsDeck, player);
+        return cardsDeck;
+
+    }
+
+    private static void cardDistribution(ArrayList<String> cardsDeck, int player) {
+
+        for (int i = 0; i < player; i++) {
+            System.out.println("\nPlayer " + (i + 1) + " got cards:\n");
+
+            for (int j = 0; j < 9; j++) {
+                System.out.println("\t" + cardsDeck.get(i + j * player));
+            }
+        }
+        System.out.println();
     }
 
     public void deckOfCards() {
@@ -32,19 +56,9 @@ public class Cards {
         for (int i = 0; i < ranks.length; i++) {
             for (int j = 0; j < suits.length; j++) {
                 cardsDeck.add(ranks[i] + "   " + suits[j]);
-
             }
-
         }
         toDisplay(cardsDeck);
-    }
-
-    private void toDisplay(ArrayList<String> cardsDeck) {
-        System.out.println("\nCards in Deck: ");
-        for (String element : cardsDeck) {
-            System.out.println(element);
-        }
-        System.out.println();
     }
 
     public void noOfPlayers() {
@@ -63,5 +77,6 @@ public class Cards {
         System.out.println("\nSequence of cards are below : ");
         toshuffle(cardsDeck, player);
     }
+
 }
 
